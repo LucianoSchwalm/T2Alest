@@ -2,20 +2,20 @@ import java.util.ArrayList;
 
 public class Vertice<TIPO> {
     private String valor;
-    private TIPO dado;
+    private Integer dado;
     private ArrayList<Aresta<TIPO>> arestas;
     
-    public Vertice(TIPO dado,String valor){
+    public Vertice(Integer dado,String valor){
         this.valor = valor;
         this.dado = dado;
         this.arestas = new ArrayList<Aresta<TIPO>>();
     }
 
-    public TIPO getDado() {
+    public Integer getDado() {
         return dado;
     }
 
-    public void setDado(TIPO dado) {
+    public void setDado(Integer dado) {
         this.dado = dado;
     }
 

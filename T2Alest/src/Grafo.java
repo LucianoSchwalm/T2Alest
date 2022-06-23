@@ -10,12 +10,12 @@ public class Grafo<TIPO> {
         this.arestas = new ArrayList<Aresta<TIPO>>();
     }
     
-    public void adicionarVertice(TIPO dado,String a){
+    public void adicionarVertice(Integer dado,String a){
         Vertice<TIPO> novoVertice = new Vertice<TIPO>(dado,a);
         this.vertices.add(novoVertice);
     }
     
-    public void adicionarAresta(TIPO d1, TIPO d2){
+    public void adicionarAresta(Integer d1, Integer d2){
         Vertice<TIPO> v1 = this.getVertice(d1);
         Vertice<TIPO> v2 = this.getVertice(d2);
         Aresta<TIPO> aresta1 = new Aresta<TIPO>(v1, v2);
@@ -24,8 +24,26 @@ public class Grafo<TIPO> {
         this.arestas.add(aresta1);
     }
     
-    public Vertice<TIPO> getVertice(TIPO dado){
-        Vertice<TIPO> vertice = null;
+    public Vertice<TIPO> getVertice(Integer dado){
+        int inicio = 0; int fim = vertices.size(); int meio = 0;
+        Vertice<TIPO> verticeProcurado = null;
+        while(inicio <= fim) {
+            meio = (fim + inicio) / 2;
+            if(vertices.get(meio).getDado().equals(dado)) {
+                verticeProcurado = vertices.get(meio);
+                break;
+            }
+            if(vertices.get(meio).getDado() < dado) {
+                inicio = meio + 1;
+            } 
+            else {
+                fim = meio - 1;
+            }
+        }
+        return verticeProcurado;
+    }
+         
+        /*Vertice<TIPO> vertice = null;
         for(int i=0; i < this.vertices.size(); i++){
             if (this.vertices.get(i).getDado().equals(dado)){
                 vertice = this.vertices.get(i);
@@ -33,7 +51,7 @@ public class Grafo<TIPO> {
             }
         }
         return vertice;
-    }
+    }*/
 
     public void buscaEmLargura(){
         ArrayList<Integer> players = new ArrayList<Integer>();
@@ -42,7 +60,6 @@ public class Grafo<TIPO> {
                 players.add(k);
             }
         }
-        System.out.println(players);
         while(players.size()>0){
             ArrayList<Vertice<TIPO>> marcados = new ArrayList<Vertice<TIPO>>();
             ArrayList<Vertice<TIPO>> fila = new ArrayList<Vertice<TIPO>>();
