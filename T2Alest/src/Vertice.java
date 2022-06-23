@@ -15,9 +15,6 @@ public class Vertice<TIPO> {
         return dado;
     }
 
-    public void setDado(Integer dado) {
-        this.dado = dado;
-    }
 
     public String getValor() {
         return valor;

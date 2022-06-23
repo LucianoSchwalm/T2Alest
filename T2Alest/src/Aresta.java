@@ -7,20 +7,7 @@ public class Aresta<TIPO> {
         this.fim = fim;
     }
 
-    public Vertice<TIPO> getInicio() {
-        return inicio;
-    }
-
-    public void setInicio(Vertice<TIPO> inicio) {
-        this.inicio = inicio;
-    }
-
     public Vertice<TIPO> getFim() {
         return fim;
     }
-
-    public void setFim(Vertice<TIPO> fim) {
-        this.fim = fim;
-    }
-    
 }

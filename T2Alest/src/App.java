@@ -8,7 +8,7 @@ public class App {
         //Map<String, String> cadaLinha = new HashMap<String, String>();
         //Nome do arquivo passado na linha de comando
         //Descompressor descompressor = new Descompressor();
-        try (Stream<String> stream = Files.lines(Paths.get("C:/Users/Luciano/Documents/T2Alest/T2Alest/lib/caso06.txt"))) {
+        try (Stream<String> stream = Files.lines(Paths.get("../T2Alest/T2Alest/lib/caso04.txt"))) {
             stream.forEach(linha -> {
                 String replaceRegex = linha.replaceAll("\\B|\\b", " ");
                 String[] splitArray = replaceRegex.split(" ");
@@ -30,6 +30,7 @@ public class App {
         } catch (Exception e) {
             System.out.println("Problemas no processamento do arquivo de entrada");
         }
-        grafo.buscaEmLargura();
+        grafo.labirintoContaCasas();
+        System.out.println("operacoes="+Grafo.op+" quantas passagens no looping="+Grafo.looping);
     }
 }

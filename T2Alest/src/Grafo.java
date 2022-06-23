@@ -4,6 +4,8 @@ public class Grafo<TIPO> {
     private ArrayList<Vertice<TIPO>> vertices;
     private ArrayList<Aresta<TIPO>> arestas;
     public static int count=0;
+    public static int op=0;
+    public static int looping=0;
     
     public Grafo(){
         this.vertices = new ArrayList<Vertice<TIPO>>();
@@ -29,31 +31,39 @@ public class Grafo<TIPO> {
         Vertice<TIPO> verticeProcurado = null;
         while(inicio <= fim) {
             meio = (fim + inicio) / 2;
+            op++;
             if(vertices.get(meio).getDado().equals(dado)) {
                 verticeProcurado = vertices.get(meio);
+                Grafo.op++;
                 break;
             }
             if(vertices.get(meio).getDado() < dado) {
                 inicio = meio + 1;
+                Grafo.op++;
             } 
             else {
                 fim = meio - 1;
+                Grafo.op++;
             }
+            Grafo.looping++;
         }
         return verticeProcurado;
     }
-         
-        /*Vertice<TIPO> vertice = null;
+    /*public Vertice<TIPO> getVertice(Integer dado){
+        Vertice<TIPO> vertice = null;int aux=0;
         for(int i=0; i < this.vertices.size(); i++){
             if (this.vertices.get(i).getDado().equals(dado)){
                 vertice = this.vertices.get(i);
+                aux = i;
                 break;
             }
+            Grafo.op++;
         }
+        Grafo.looping=looping+aux;
         return vertice;
     }*/
 
-    public void buscaEmLargura(){
+    public void labirintoContaCasas(){
         ArrayList<Integer> players = new ArrayList<Integer>();
         for(int k = 0; k<vertices.size();k++){
             if(vertices.get(k).getValor().matches("[1-9]")){
